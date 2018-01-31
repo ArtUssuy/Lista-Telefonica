@@ -53,7 +53,6 @@
                 delete $scope.contato;
             };
 
-
         });
 
 
@@ -76,8 +75,8 @@
                     <td>Operadora</td>
                 </tr>
 
-                <tr ng-repeat="contato in contatos" ng-class="">
-                    <td><input type="checkbox"></td>
+                <tr ng-repeat="contato in contatos" ng-class="{selecionado: contato.selecionado}">
+                    <td><input type="checkbox" ng-model="contato.selecionado"></td>
                     <td>{{contato.nome}}</td>
                     <td>{{contato.telefone}}</td>
                     <td>{{contato.operadora.nome}}</td>

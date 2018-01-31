@@ -1,0 +1,104 @@
+<html ng-app="listaTelefonica">
+
+    <head>
+
+        <style>
+            .jumbotron {
+                width: 400px;
+                text-align: center;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        
+            .selecionado {
+                background-color: yellow;
+            }
+        
+            .negrito {
+                font-weight: bold;
+            }
+        </style>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Lista Telefônica</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+
+        angular.module("listaTelefonica", []);
+        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope){
+
+            $scope.titulo = "Lista Telefônica";
+
+            $scope.classe1 = "selecionado";
+            $scope.classe2 = "negrito";
+
+            $scope.contatos = [
+                { nome: "Naruto", telefone: 32564512},
+                { nome: "Sakura", telefone: 98545156},
+                { nome: "Sasuke", telefone: 16546516}
+            ];
+
+            $scope.operadoras = [
+                { nome: "Vivo", codigo: 15, categoria: "Celular"},
+                { nome: "Oi", codigo: 18, categoria: "Celular"},
+                { nome: "Tim", codigo: 14, categoria: "Celular"},
+                { nome: "GVT", codigo: 54, categoria: "Fixo"},
+                { nome: "Embratel", codigo: 32, categoria: "Fixo"}
+            ];
+
+            $scope.adicionarContato = function(contato){
+                $scope.contatos.push(angular.copy(contato));
+                delete $scope.contato;
+            };
+
+
+        });
+
+
+    </script>
+
+
+
+
+    </head>
+
+    <body ng-controller="listaTelefonicaCtrl">
+        <div class="jumbotron">
+            <h3>{{titulo}}</h3>
+
+            <table class="table">
+                <tr>
+                    <td></td>
+                    <td>Nome</td>
+                    <td>Telefone</td>
+                    <td>Operadora</td>
+                </tr>
+
+                <tr ng-repeat="contato in contatos" ng-class="">
+                    <td><input type="checkbox"></td>
+                    <td>{{contato.nome}}</td>
+                    <td>{{contato.telefone}}</td>
+                    <td>{{contato.operadora.nome}}</td>
+                </tr>
+            </table>
+
+            <input type="text" class="form-control" placeholder="Digite seu nome" ng-model="contato.nome">
+            <input type="text" class="form-control" placeholder="Digite seu telefone" ng-model="contato.telefone">
+            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"><option value="">Selecione uma operadora</option></select>
+            <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Salvar Contato</button>
+        </div>
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+</html>

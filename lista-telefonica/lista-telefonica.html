@@ -12,9 +12,6 @@
         
             .selecionado {
                 background-color: yellow;
-            }
-        
-            .negrito {
                 font-weight: bold;
             }
         </style>
@@ -45,24 +42,36 @@
                 { nome: "Embratel", codigo: 32, categoria: "Fixo"}
             ];
 
-            $scope.adicionarContato = function(contato){ /* teste */
+            $scope.adicionarContato = function(contato){
                 $scope.contatos.push(angular.copy(contato));
                 delete $scope.contato;
             };
 
             $scope.apagarContatos = function(contatos){
                 $scope.contatos = contatos.filter(function(contato){
+<<<<<<< HEAD
                     if(!contato.selecionado){
                         return contato;
                     }
+=======
+                    if(!contato.selecionado)
+                        return contato;
+>>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
                 });
             };
 
             $scope.isContatoSelecionado = function(contatos){
+<<<<<<< HEAD
                 return contatos.some(function(contato){
                     return contato.selecionado;
                 });
             }   
+=======
+                return isContatoSelecionado = contatos.some(function(contato){
+                    return contato.selecionado;
+                })
+            };
+>>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
 
         });
 
@@ -78,7 +87,7 @@
         <div class="jumbotron">
             <h3>{{titulo}}</h3>
 
-            <table class="table">
+            <table class="table" ng-show="contatos.length > 0">
                 <tr>
                     <td></td>
                     <td>Nome</td>
@@ -86,7 +95,11 @@
                     <td>Operadora</td>
                 </tr>
 
+<<<<<<< HEAD
                 <tr ng-repeat="contato in contatos" ng-class="{'negrito selecionado': contato.selecionado}">
+=======
+                <tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
+>>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
                     <td><input type="checkbox" ng-model="contato.selecionado"></td>
                     <td>{{contato.nome}}</td>
                     <td>{{contato.telefone}}</td>
@@ -94,17 +107,16 @@
                 </tr>
             </table>
 
-            <input type="text" class="form-control" placeholder="Digite seu nome" ng-model="contato.nome">
+            <input type="text" class="form-control" placeholder="Digite seu nome" ng-model="contato.nome" ng-required="true">
             <input type="text" class="form-control" placeholder="Digite seu telefone" ng-model="contato.telefone">
             <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"><option value="">Selecione uma operadora</option></select>
             <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Salvar Contato</button>
+<<<<<<< HEAD
             <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-disabled="!isContatoSelecionado(contatos)">Apagar Contato</button>
+=======
+            <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contato</button>
+>>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
         </div>
-
-
-
-
-
 
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

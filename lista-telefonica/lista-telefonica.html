@@ -49,29 +49,16 @@
 
             $scope.apagarContatos = function(contatos){
                 $scope.contatos = contatos.filter(function(contato){
-<<<<<<< HEAD
-                    if(!contato.selecionado){
-                        return contato;
-                    }
-=======
                     if(!contato.selecionado)
                         return contato;
->>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
                 });
             };
 
             $scope.isContatoSelecionado = function(contatos){
-<<<<<<< HEAD
-                return contatos.some(function(contato){
-                    return contato.selecionado;
-                });
-            }   
-=======
                 return isContatoSelecionado = contatos.some(function(contato){
                     return contato.selecionado;
                 })
             };
->>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
 
         });
 
@@ -95,11 +82,7 @@
                     <td>Operadora</td>
                 </tr>
 
-<<<<<<< HEAD
                 <tr ng-repeat="contato in contatos" ng-class="{'negrito selecionado': contato.selecionado}">
-=======
-                <tr ng-repeat="contato in contatos" ng-class="{'selecionado': contato.selecionado}">
->>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
                     <td><input type="checkbox" ng-model="contato.selecionado"></td>
                     <td>{{contato.nome}}</td>
                     <td>{{contato.telefone}}</td>
@@ -111,11 +94,7 @@
             <input type="text" class="form-control" placeholder="Digite seu telefone" ng-model="contato.telefone">
             <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"><option value="">Selecione uma operadora</option></select>
             <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Salvar Contato</button>
-<<<<<<< HEAD
             <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-disabled="!isContatoSelecionado(contatos)">Apagar Contato</button>
-=======
-            <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-show="isContatoSelecionado(contatos)">Apagar Contato</button>
->>>>>>> 33eae00ced4ade70dd195a4e76db5dcd05aa3fcc
         </div>
 
 
